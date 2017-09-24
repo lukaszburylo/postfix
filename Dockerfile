@@ -11,3 +11,9 @@ RUN apt-get -y install supervisor postfix sasl2-bin opendkim opendkim-tools
 # Clean
 RUN apt-get autoremove
 RUN apt-get clean
+
+# Add files
+ADD assets/install.sh /opt/install.sh
+
+# Run
+CMD /opt/install.sh;/usr/bin/supervisord -c /etc/supervisor/supervisord.conf
