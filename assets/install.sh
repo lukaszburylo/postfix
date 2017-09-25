@@ -29,6 +29,13 @@ chmod +x /opt/postfix.sh
 postconf -e myhostname=$maildomain
 postconf -F '*/*/chroot = n'
 
+###########
+# maildir over mailbox
+###########
+postconf -e "home_mailbox = Maildir/"
+postconf -e "mailbox_command = "
+
+
 ############
 # SASL SUPPORT FOR CLIENTS
 # The following options set parameters needed by Postfix to enable
