@@ -40,9 +40,8 @@ postconf -e broken_sasl_auth_clients=yes
 postconf -e smtpd_recipient_restrictions=permit_sasl_authenticated,reject_unauth_destination
 # smtpd.conf
 cat >> /etc/postfix/sasl/smtpd.conf <<EOF
-pwcheck_method: auxprop
-auxprop_plugin: sasldb
-mech_list: PLAIN LOGIN CRAM-MD5 DIGEST-MD5 NTLM
+pwcheck_method: saslauthd
+mech_list: plain login
 EOF
 # sasldb2
 echo $smtp_user | tr , \\n > /tmp/passwd
